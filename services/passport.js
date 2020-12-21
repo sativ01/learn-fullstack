@@ -6,6 +6,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../secret');
 const { google } = keys; 
 
+console.log(keys);
+
 const modelNames = require('../models/modelNames');
 const UsersModel = mongoose.model(modelNames.users);
 
