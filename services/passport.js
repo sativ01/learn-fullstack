@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-const keys = require('../secret/authKey.js');
+const keys = require('../secret');
 const { google } = keys; 
 
 const modelNames = require('../models/modelNames');
@@ -36,11 +36,9 @@ async (accessToken, refreshToken, profile, done)  => {
       }).save();
     }
     done(null, user);
-    console.log(`done ${user.name}`);
   } catch(err){
     error = err;
     done(error, user);
-    console.log(`err ${user.name}`);
   }
 
 }));

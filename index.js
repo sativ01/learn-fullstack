@@ -5,8 +5,8 @@ const passport = require('passport')
 
 require('./models/User')
 require('./services/passport')
-const mongoKeys = require('./secret/authKey').mongo;
-const cookieKey = require('./secret/authKey').cookieSession;
+const mongoKeys = require('./secret').mongo;
+const cookieKey = require('./secret').cookieSession;
 
 mongoose.connect(mongoKeys.uri)
 
@@ -16,7 +16,7 @@ const app = express();
 
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     keys: [cookieKey.encriptionKey]
   })
 )
